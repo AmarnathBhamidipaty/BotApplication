@@ -1,0 +1,18 @@
+{
+    "name": "Evolve404",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "9329c3e8-9101-411e-a02a-a2ba7ea88090",
+            "appPassword": "uoogRGH607%{|yvnIKDD29]",
+            "endpoint": "http://localhost:3984/api/messages",
+            "id": "d214be20-bcd9-11e8-a8e2-d33df9247423",
+            "name": "http://localhost:3984/api/messages"
+        }
+    ],
+    "secretKey": "",
+    "version": "2.0",
+    "overrides": null,
+    "path": "D:\\EVOLVE404\\BotApplication\\Evolve404.bot"
+}

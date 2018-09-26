@@ -10,14 +10,13 @@ using System.Collections.Generic;
 // in a conversation.
 namespace Microsoft.Bot.Sample.FormBot
 {
-    public enum SandwichOptions
+    //[Prompt("Where do you feel discomfort?")]
+    public enum PainTypes
     {
-        BLT, BlackForestHam, BuffaloChicken, ChickenAndBaconRanchMelt, ColdCutCombo, MeatballMarinara,
-        OvenRoastedChicken, RoastBeef, RotisserieStyleChicken, SpicyItalian, SteakAndCheese, SweetOnionTeriyaki, Tuna,
-        TurkeyBreast, Veggie
+        Head, Leg, Neck, Hand
     };
-    public enum LengthOptions { SixInch, FootLong };
-    public enum BreadOptions { NineGrainWheat, NineGrainHoneyOat, Italian, ItalianHerbsAndCheese, Flatbread };
+    public enum HandPainTypes { Wrist, Hnad, Elbow };
+    public enum LegPainTypes { Knee, Leg, Ankle };
     public enum CheeseOptions { American, MontereyCheddar, Pepperjack };
     public enum ToppingOptions
     {
@@ -33,9 +32,9 @@ namespace Microsoft.Bot.Sample.FormBot
     [Serializable]
     public class SandwichOrder
     {
-        public SandwichOptions? Sandwich;
-        public LengthOptions? Length;
-        public BreadOptions? Bread;
+        public PainTypes? Specialty;
+        public HandPainTypes? Hospitals;
+        public LegPainTypes? Bread;
         public CheeseOptions? Cheese;
         public List<ToppingOptions> Toppings;
         public List<SauceOptions> Sauce;
@@ -46,9 +45,12 @@ namespace Microsoft.Bot.Sample.FormBot
             {
                 await context.PostAsync("This is the end of the form, you would give a final confirmation, and then start the ordering process as needed.");
             };
-
+            int i = 0;
             return new FormBuilder<SandwichOrder>()
-                    .Message("Welcome to the simple sandwich order bot!")
+                    .Message("Hello how may I help You?")
+                    .Field(nameof(Specialty))
+                    .Message("Thanks for selecting speciality")
+                    .Field(nameof(Hospitals), "Let me know where do you feel pain?")
                     .OnCompletion(processOrder)
                     .Build();
         }
